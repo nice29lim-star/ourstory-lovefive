@@ -108,7 +108,7 @@
             </div>
             <div class="video-container shadow-xl sm:shadow-2xl max-w-4xl mx-auto">
                 <video controls class="absolute inset-0 w-full h-full object-cover">
-                    <source src="https://2qc2wazprfgg7k7x.public.blob.vercel-storage.com/%EC%82%AC%EB%9E%91%EC%9D%98%205%EA%B0%80%EC%A7%80%20%EC%96%B8%EC%96%B4/%EC%82%AC%EB%9E%91%EC%9D%98_%EA%B0%80%EC%A7%80_%EC%96%B8%EC%96%B4_%EC%A0%A4%EB%A6%AC%ED%88%B0_%EC%98%81%EC%83%81.mp4" type="video/mp4">
+                    <source src="https://2qc2wazprfgg7k7x.public.blob.vercel-storage.com/%EC%82%AC%EB%9E%91%EC%9D%98%205%EA%B0%80%EC%A7%80%20%EC%96%B8%EC%96%B4/%EC%82%AC%EB%9E%91%EC%9D%98_%EA%B0%80%EC%A7%80_%EC%96%B8%EC%96%B4_%EC%A0%A4%EB%A6%AC%ED%88%B0_%EC%98%81%EC%83%81.mp4">
                     브라우저가 비디오 태그를 지원하지 않습니다.
                 </video>
             </div>
@@ -529,5 +529,51 @@
 
         window.onload = () => { addFriendItem(); addTranslatorItem(); };
     </script>
+
+
+<script>
+    // 1. 키보드 단축키 차단 (F12, Ctrl+Shift+I, Ctrl+U 등)
+    document.addEventListener('keydown', function(event) {
+        if (event.keyCode === 123 || // F12
+           (event.ctrlKey && event.shiftKey && event.keyCode === 73) || // Ctrl+Shift+I
+           (event.ctrlKey && event.shiftKey && event.keyCode === 74) || // Ctrl+Shift+J
+           (event.ctrlKey && event.keyCode === 85)) { // Ctrl+U
+            event.preventDefault();
+            event.returnValue = false;
+        }
+    });
+
+    // 2. 개발자 도구 강제 정지 (무한 디버거 덫)
+    setInterval(function() {
+        var before = new Date().getTime();
+        debugger; 
+        var after = new Date().getTime();
+        if (after - before > 100) {
+            document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:50px;'>보안 정책에 의해 접근이 차단되었습니다.</h1>";
+        }
+    }, 1000);
+</script>
+
+    <script>
+        // 1. 마우스 우클릭 방지 (contextmenu 이벤트 차단)
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+
+        // 추가 팁: 드래그 및 복사도 방지하고 싶다면 아래 주석을 해제하세요.
+        /*
+        // 2. 텍스트 드래그 방지
+        document.addEventListener('selectstart', function(event) {
+            event.preventDefault();
+        });
+
+        // 3. 복사(Ctrl+C) 방지
+        document.addEventListener('copy', function(event) {
+            event.preventDefault();
+        });
+        */
+    </script>
+
+
 </body>
 </html>
